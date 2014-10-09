@@ -20,10 +20,6 @@ angular
                 templateUrl: 'views/Main.html',
                 controller: 'MainCtrl'
             })
-            .when('/bottles', {
-                templateUrl: 'views/Bottles.html',
-                controller: 'BottlesCtrl'
-            })
             .otherwise({
                 redirectTo: '/'
             });
