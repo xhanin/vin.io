@@ -1,8 +1,12 @@
 <div ng-controller="BottlesCtrl">
 
+    <label>RED<input type="radio" ng-model="selectedColor" value="RED"></label>
+    <label>WHITE<input type="radio" ng-model="selectedColor" value="WHITE"></label>
+    <label>ROSE<input type="radio" ng-model="selectedColor" value="ROSE"></label>
+
     <!-- Master -->
     <ul class="btls-list" ng-class="{'split' : selection}">
-        <li class="animate" ng-repeat="bottle in bottles">
+        <li class="animate" ng-repeat="bottle in bottles | filter:query | color:selectedColor">
             <div class="btl-ctr">
                 <span class="btl" ng-include="'images/bottle.svg'" ng-class="{
                              'bdx'   : bottle.color == 'RED',
