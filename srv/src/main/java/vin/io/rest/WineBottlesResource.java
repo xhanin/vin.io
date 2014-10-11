@@ -29,7 +29,9 @@ public class WineBottlesResource {
     @POST("/bottles")
     public WineBottle createBottle(WineBottle bottle) {
         MongoCollection collection = bottles.get();
-        bottle.setKey(new ObjectId().toString());
+        if (bottle.getKey() == null) {
+            bottle.setKey(new ObjectId().toString());
+        }
         collection.save(bottle);
         return bottle;
     }
