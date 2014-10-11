@@ -1,6 +1,6 @@
 package vin.io.domain;
 
-public class WineBottle {
+public class WineBottle extends Entity {
 
     private String domain;
 

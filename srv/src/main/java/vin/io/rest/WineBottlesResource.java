@@ -1,6 +1,9 @@
 package vin.io.rest;
 
+import org.bson.types.ObjectId;
+import org.jongo.MongoCollection;
 import restx.annotations.GET;
+import restx.annotations.POST;
 import restx.annotations.RestxResource;
 import restx.factory.Component;
 import restx.jongo.JongoCollection;
@@ -21,5 +24,13 @@ public class WineBottlesResource {
     @GET("/bottles")
     public Iterable<WineBottle> getAllBottles() {
         return bottles.get().find().as(WineBottle.class);
+    }
+
+    @POST("/bottles")
+    public WineBottle createBottle(WineBottle bottle) {
+        MongoCollection collection = bottles.get();
+        bottle.setKey(new ObjectId().toString());
+        collection.save(bottle);
+        return bottle;
     }
 }
