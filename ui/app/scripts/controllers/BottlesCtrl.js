@@ -5,4 +5,19 @@ angular.module('vin.io')
 
         $scope.bottles = Bottle.query();
 
+        $scope.colors = ['RED', 'WHITE', 'ROSE'];
+
+        $scope.openDetail = function (bottle) {
+            $scope.selection = bottle;
+        };
+
+        $scope.edit = function (bottle) {
+            Bottle.save(bottle).$promise
+                .then(function () {
+                    alert("Bottle updated");
+                })
+                .catch(function () {
+                    alert("Error");
+                });
+        };
     });
